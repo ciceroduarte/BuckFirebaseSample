@@ -4,7 +4,7 @@ APP_NAME = "BuckFirebaseSample"
 
 apple_resource(
   name = 'BuckFirebaseSampleResources',
-  files = glob(['LaunchScreen.storyboard',]),
+  files = glob(['LaunchScreen.storyboard', 'GoogleService-Info.plist']),
   dirs = [],
 )
 
@@ -12,7 +12,31 @@ apple_library(
   name = "BuckFirebaseSampleAppLibrary",
   configs = library_configs(),
   srcs = glob(['*.swift']),
-  deps = [':BuckFirebaseSampleResources'],
+  deps = [':BuckFirebaseSampleResources',],
+  exported_linker_flags = [
+    '-lsqlite3',
+    '-lbz2',
+    '-lc++',
+  ],
+  frameworks = [
+    "$SDKROOT/System/Library/Frameworks/CoreTelephony.framework",
+    "$SDKROOT/System/Library/Frameworks/CoreData.framework",
+    "$SDKROOT/System/Library/Frameworks/Security.framework",
+    "$SDKROOT/System/Library/Frameworks/StoreKit.framework",
+    "$SDKROOT/System/Library/Frameworks/SystemConfiguration.framework",
+
+    "Frameworks/Firebase.framework",
+    "Frameworks/FIRAnalyticsConnector.framework",
+    "Frameworks/FirebaseAnalytics.framework",
+    "Frameworks/FirebaseCore.framework",
+    "Frameworks/FirebaseCoreDiagnostics.framework",
+    "Frameworks/FirebaseInstallations.framework",
+    "Frameworks/GoogleAppMeasurement.framework",
+    "Frameworks/GoogleDataTransport.framework",
+    "Frameworks/GoogleUtilities.framework",
+    "Frameworks/nanopb.framework",
+    "Frameworks/PromisesObjc.framework"
+  ],
 )
 
 apple_binary(
@@ -25,6 +49,7 @@ apple_binary(
 apple_bundle(
   name = 'BuckFirebaseSampleApp',
   binary = ':BuckFirebaseSampleAppBinary',
+  product_name = APP_NAME,
   extension = 'app',
   info_plist = 'Info.plist',
   info_plist_substitutions = info_plist_substitutions(APP_NAME),

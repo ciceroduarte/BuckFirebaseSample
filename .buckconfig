@@ -13,7 +13,6 @@
 
 [alias]
   app = //App:BuckFirebaseSampleApp
-  workspace = //App:workspace
 
 [apple]
   iphonesimulator_target_sdk_version = 10.0
@@ -39,11 +38,15 @@
             buck-cache, \
             buck-out, \
 
+[build]
+  threads = 4
+
 [custom]
- config = debug
- optimization = -Onone
- config_swift_compiler_flags = -DDEBUG -enable-testing -g
- code_coverage_cflags = -fprofile-instr-generate -fcoverage-mapping
- code_coverage_cxxflags = -fprofile-instr-generate -fcoverage-mapping
- code_coverage_ldflags = -fprofile-instr-generate
- code_coverage_swift_compiler_flags = -profile-generate -profile-coverage-mapping
+  config = debug
+  optimization = -Onone
+  config_swift_compiler_flags = -DDEBUG -enable-testing -g
+  code_coverage_cflags = -fprofile-instr-generate -fcoverage-mapping
+  code_coverage_cxxflags = -fprofile-instr-generate -fcoverage-mapping
+  code_coverage_ldflags = -fprofile-instr-generate
+  code_coverage_swift_compiler_flags = -profile-generate -profile-coverage-mapping
+  

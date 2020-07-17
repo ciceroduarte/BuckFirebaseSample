@@ -26,6 +26,8 @@ xcuserdata/
 *.moved-aside
 *.xccheckout
 *.xcscmblueprint
+App/Frameworks
+App/GoogleService-Info.plist
 
 ## Obj-C/Swift specific
 *.hmap
@@ -59,6 +61,7 @@ playground.xcworkspace
 # Carthage/Checkouts
 
 Carthage/Build
+Cartfile.resolved
 
 # Accio dependency management
 Dependencies/
