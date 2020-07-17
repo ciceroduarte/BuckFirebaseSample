@@ -2,6 +2,7 @@ language: objective-c
 osx_image: xcode11.5
 
 before_install:
+  - make install_buck
   - make setup
 
 script:
