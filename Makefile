@@ -1,6 +1,7 @@
 BUCK=tools/buck
 
 install_buck:
+	mkdir -p tools
 	curl https://jitpack.io/com/github/airbnb/buck/4bd1a08625454c5034eb6ef6193e94f9e6e62a62/buck-4bd1a08625454c5034eb6ef6193e94f9e6e62a62.pex --output tools/buck
 	chmod u+x tools/buck
 
