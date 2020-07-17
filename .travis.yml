@@ -1,7 +1,9 @@
 language: objective-c
 osx_image: xcode11.5
-jdk:
-  - oraclejdk8
+addons:
+  apt:
+    packages:
+      - oracle-java8-set-default
 
 before_install:
   - make install_buck
