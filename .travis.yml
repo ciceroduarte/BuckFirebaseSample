@@ -1,13 +1,15 @@
-language: java
-osx_image: xcode11.5
-dist: trusty
-jdk:
-  - openjdk8
+matrix:
+  include:
+    - language: java
+      dist: trusty
+      jdk:
+        - openjdk8
 
-before_install:
-  - brew install carthage || true
-  - make install_buck
-  - make setup
-
-script:
-  - make build
+    - language: objective-c
+      os: osx
+      osx_image: xcode11.5
+      before_script:
+        - make install_buck
+        - make setup
+      script:
+        - make build
